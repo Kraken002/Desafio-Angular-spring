@@ -10,14 +10,16 @@ import { Course } from '../model/course';
 })
 export class CoursesComponent implements OnInit {
 
-  courses:any = Observable<Course[]>;
+  courses$ : any = Observable<Course[]>;
+
 displayedColumns = ['name', 'category'];
 
 
 
   constructor( public CoursesService : CoursesService){
     // this.courses=[]
-this.courses = this.CoursesService.list();;
+    this.courses$ = this.CoursesService.list()
+// this.courses = this.CoursesService.list().subscribe(courses=>this.courses = courses);
  }
 
   ngOnInit(): void {
